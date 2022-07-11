@@ -1,0 +1,10 @@
+{
+  "name": "UptoDL",
+  "description": "Bot de Telegram para buscar y extraer enlaces de descargas de aplicaciones uptodown",
+  "repository": "https://github.com/ObisoftDev/uptodlbotheroku", 
+  "env": {
+    "bot_token": {
+      "description": "El token del bot"
+    }
+  }
+}
