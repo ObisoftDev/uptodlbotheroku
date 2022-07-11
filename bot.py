@@ -125,7 +125,7 @@ def sizeof_fmt(num, suffix='B'):
 
 def main() -> None:
     try:
-        bot_token = os.environ.get('bot_token'
+        bot_token = os.environ.get('bot_token')
         updater = Updater(bot_token)
 
         dispatcher = updater.dispatcher
