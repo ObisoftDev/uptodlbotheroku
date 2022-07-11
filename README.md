@@ -2,7 +2,7 @@
 Bot De Telegram Para Buscar Aplicaciones En Uptodown Y Los Enlaces De Descarga
 
 # Redes Sociales
-Usuario En Telegram : https://t.me/obidev
+Usuario En Telegram : https://t.me/obidevel
 
 Canal En Telegram : https://t.me/obidevchannel
 
