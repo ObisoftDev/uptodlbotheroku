@@ -23,7 +23,7 @@ def search(name='',tag='windows'):
             divname = item.find('div',{'class':'name'}).find('a')
             name = divname.next
             url =  divname['href']
-            img = item.find('figure').find('img')['data-src']
+            img = item.find('img')['src']
             searchList.append({'name':name,'url':url,'img':img})
         except:pass
 
@@ -36,17 +36,29 @@ def req_file_size(req):
         return 0
 
 def getInfo(item):
-    downUrl = item['url'] + '/descargar'
+    try:
+        downUrl = item['url'] + '/descargar'
 
-    session = requests.Session()
+        session = requests.Session()
 
-    resp = session.get(downUrl)
-    html = str(resp.text)
-    soup = BeautifulSoup(html, "html.parser")
-    directUrl = soup.find('a',{'id':'detail-download-button'})['href']
-    divInfo = soup.find('div',{'class':'notice'})
-    text = divInfo.find_all('img')[0].next
-    return {'url':directUrl,'text':text,'name':item['name'] + ' Url'}
+        resp = session.get(downUrl)
+        html = str(resp.text)
+        soup = BeautifulSoup(html, "html.parser")
+        try:
+            directUrl = soup.find('a',{'id':'detail-download-button'})['href']
+        except:
+            directUrl = soup.find('button',{'id':'detail-download-button'})['data-url']
+        divInfo = soup.find('div',{'class':'notice'})
+        text = ''
+        imgs = divInfo.find_all('img')
+        for img in imgs:
+            try:
+                text += img.next
+            except:pass
+        return {'url':directUrl,'text':text,'name':item['name'] + ' Url'}
+    except:pass
+    return None
 
-#list = search('nod32')
+#list = search('naruto')
+#info = getInfo(list[0])
 #print(list)
